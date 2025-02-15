@@ -1,0 +1,33 @@
+<div class="modal fade" id="whatsappModal" tabindex="-1" role="dialog" aria-labelledby="whatsappModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="whatsappModalLabel">{{#str}} whatsapp, local_whatsapp {{/str}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center justify-content-center justify-content-md-start">
+                {{#contacts}}
+                    <div id="qrcode-{{id}}" class="qrcode mb-3"></div>
+                    <br>
+                    <div class="contact-link d-flex flex-row align-items-center justify-content-between p-2 mb-3">
+                        <a href="{{whatsapp_link}}"
+                            target="_blank"
+                            class="mr-2 pl-3 pr-3">
+                            {{fullname}}
+                        </a>
+                        <button id="copy-contact-{{id}}-button"
+                            class="btn btn-info"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="{{#str}} copy_clipboard, local_whatsapp {{/str}}"
+                        >
+                            {{#str}} copy_link, local_whatsapp {{/str}}
+                        </button>
+                    </div>
+                {{/contacts}}
+            </div>
+        </div>
+    </div>
+</div>

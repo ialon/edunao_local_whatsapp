@@ -1,0 +1,22 @@
+#whatsappModal .modal-body .qrcode {
+    display: inline-block;
+    width: 256px;
+    height: 256px;
+}
+
+#whatsappModal .modal-body .contact-link,
+#whatsappModal .modal-body .contact-link a {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#whatsappModal .modal-body .contact-link {
+    border: 1px solid #dee2e6;
+    border-radius: .50rem;
+}
+
+#whatsappModal .modal-body .contact-link a {
+    display: inline-block;
+}
