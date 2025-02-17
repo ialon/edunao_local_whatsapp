@@ -20,3 +20,8 @@
 #whatsappModal .modal-body .contact-link a {
     display: inline-block;
 }
+
+#whatsappModal #configForm .checkbox {
+    height: 16px;
+    width: auto;
+}

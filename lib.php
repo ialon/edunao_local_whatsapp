@@ -69,8 +69,10 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
 
     // Call init js script.
     $PAGE->requires->js_call_amd('local_whatsapp/main', 'init', [
+        $course->id,
         $teachercontacts,
         $canmanage,
-        $mycontact
+        $mycontact,
+        ''
     ]);
 }

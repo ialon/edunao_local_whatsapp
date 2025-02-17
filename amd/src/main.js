@@ -6,10 +6,14 @@ define([
     'qrcode',
 ], function($, Ajax, Templates, str, QRCode) {
     return {
-        init: function(teachers, canManage, user) {
+        init: function(courseID, teachers, canManage, user, groupLink) {
+            this.courseID = courseID;
             this.teachers = teachers;
             this.canManage = canManage;
             this.user = user;
+            this.groupLink = groupLink;
+
+            // Add the user to the contacts list if they have enabled WhatsApp.
             this.contacts = this.teachers;
             if (this.user.whatsapp_enable) {
                 this.contacts = this.teachers.concat(this.user);
@@ -73,9 +77,11 @@ define([
             }
 
             const context = {
+                courseID: this.courseID,
                 contacts: this.contacts,
                 canManage: this.canManage,
-                user: this.user
+                user: this.user,
+                groupLink: this.groupLink
             };
 
             Templates.render('local_whatsapp/modal', context).done(function(html, js) {
