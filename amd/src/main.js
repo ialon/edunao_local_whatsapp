@@ -15,8 +15,13 @@ define([
 
             // Add the user to the contacts list if they have enabled WhatsApp.
             this.contacts = this.teachers;
-            if (this.user.whatsapp_enable) {
+            if (this.user && this.user.whatsapp_enable) {
                 this.contacts = this.teachers.concat(this.user);
+            }
+
+            // Add the group link to the contacts list if available.
+            if (this.groupLink && this.groupLink.whatsapp_enable) {
+                this.contacts = this.contacts.concat(this.groupLink);
             }
 
             if (document.readyState === 'loading') {
@@ -78,10 +83,10 @@ define([
 
             const context = {
                 courseID: this.courseID,
+                groupLink: this.groupLink,
                 contacts: this.contacts,
                 canManage: this.canManage,
-                user: this.user,
-                groupLink: this.groupLink
+                user: this.user
             };
 
             Templates.render('local_whatsapp/modal', context).done(function(html, js) {
@@ -103,7 +108,7 @@ define([
         },
         generateQRCode: function(contact) {
             // Generate QR code
-            let qrcodeContainer = document.getElementById('qrcode-' + contact.id);
+            let qrcodeContainer = document.getElementById('qrcode-' + contact.type + '-' + contact.id);
             new QRCode(qrcodeContainer, {
                 text: contact.whatsapp_link,
                 width: 256,
@@ -111,7 +116,7 @@ define([
             });
         },
         addCopyEventListener: function(contact) {
-            button = document.getElementById('copy-contact-' + contact.id + '-button');
+            button = document.getElementById('copy-contact-' + contact.type + '-' + contact.id + '-button');
 
             if (!button) {
                 return;

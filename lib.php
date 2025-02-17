@@ -38,8 +38,11 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
         $mycontact = helper::get_user_contact($USER->id);
     }
 
+    // Contact for the group chat link.
+    $groupcontact = helper::get_group_contact($course->id);
+
     // If user can't manage and there are no contacts, don't show the link.
-    if (!$canmanage && empty($teachercontacts)) {
+    if (!$canmanage && empty($teachercontacts) && empty($groupcontact)) {
         return;
     }
 
@@ -73,6 +76,6 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
         $teachercontacts,
         $canmanage,
         $mycontact,
-        ''
+        $groupcontact
     ]);
 }

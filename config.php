@@ -31,7 +31,17 @@ $profilefields['whatsapp_enable'] = $sharenumber;
 profile_save_custom_fields($USER->id, $profilefields);
 
 // Update course group link.
-// TODO
+$handler = \core_course\customfield\course_handler::create();
+$editablefields = $handler->get_editable_fields($course->id);
+$records = \core_customfield\api::get_instance_fields_data($editablefields, $course->id);
+foreach ($records as $d) {
+    $field = $d->get_field();
+    if ($field->get('shortname') === 'whatsapp_group_link') {
+        $d->set($d->datafield(), $grouplink);
+        $d->set('value', $grouplink);
+        $d->save();
+    }
+}
 
 $redirecturl = new moodle_url('/course/view.php', ['id' => $courseid]);
 redirect($redirecturl);

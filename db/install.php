@@ -18,7 +18,7 @@ function xmldb_local_whatsapp_install() {
 
     require_once($CFG->dirroot . '/lib/datalib.php');
 
-    // Find/Create the category.
+    // Find/Create the user category.
     $category = $DB->get_record('user_info_category', ['name' => 'WhatsApp']);
     if (!$category) {
         $category = new stdClass();
@@ -71,6 +71,40 @@ function xmldb_local_whatsapp_install() {
         $field->defaultdata = 0;
         $field->defaultdataformat = 0;
         $field->id = $DB->insert_record('user_info_field', $field);
+    }
+
+    // Find/Create the course category.
+    $category = $DB->get_record('customfield_category', ['name' => 'WhatsApp']);
+    if (!$category) {
+        $category = new stdClass();
+        $category->name = 'WhatsApp';
+        $category->description = '';
+        $category->descriptionformat = 0;
+        $category->sortorder = $DB->count_records('customfield_category') + 1;
+        $category->timecreated = time();
+        $category->timemodified = time();
+        $category->component = 'core_course';
+        $category->area = 'course';
+        $category->itemid = 0;
+        $category->contextid = 1;
+        $category->id = $DB->insert_record('customfield_category', $category);
+    }
+
+    // Find/Create the course field.
+    $grouplink = $DB->get_record('customfield_field', ['shortname' => 'whatsapp_group_link']);
+    if (!$grouplink) {
+        $field = new stdClass();
+        $field->shortname = 'whatsapp_group_link';
+        $field->name = 'Group chat link';
+        $field->type = 'text';
+        $field->description = '';
+        $field->descriptionformat = 1;
+        $field->sortorder = $DB->count_records('customfield_field', ['categoryid' => $category->id]) + 1;
+        $field->categoryid = $category->id;
+        $field->configdata = '{"required":"0","uniquevalues":"1","defaultvalue":"","displaysize":50,"maxlength":1333,"ispassword":"0","link":"","locked":"0","visibility":"2"}';
+        $field->timecreated = time();
+        $field->timemodified = time();
+        $field->id = $DB->insert_record('customfield_field', $field);
     }
 
     return true;

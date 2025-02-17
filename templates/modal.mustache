@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body d-flex flex-column align-items-center justify-content-center justify-content-md-start">
                 {{#contacts}}
-                    <div id="qrcode-{{id}}" class="qrcode mb-3"></div>
+                    <div id="qrcode-{{type}}-{{id}}" class="qrcode mb-3"></div>
                     <br>
                     <div class="contact-link d-flex flex-row align-items-center justify-content-between p-2 mb-3">
                         <a href="{{whatsapp_link}}"
@@ -17,7 +17,7 @@
                             class="mr-2 pl-3 pr-3">
                             {{fullname}}
                         </a>
-                        <button id="copy-contact-{{id}}-button"
+                        <button id="copy-contact-{{type}}-{{id}}-button"
                             class="btn btn-info"
                             data-toggle="tooltip"
                             data-placement="top"
@@ -36,7 +36,7 @@
                             <h6>{{#str}} share_number, local_whatsapp {{/str}}</h6>
                             <input type="checkbox" name="share_number" class="form-control checkbox mb-3" id="share_number" {{#user.whatsapp_enable}}checked{{/user.whatsapp_enable}} data-initial-value="{{user.whatsapp_enable}}">
                             <h6>{{#str}} group_link, local_whatsapp {{/str}}</h6>
-                            <input type="text" class="form-control mb-3" name="group_link" id="group_link" value="{{groupLink}}" size="30" maxlength="2048" data-initial-value="{{groupLink}}">
+                            <input type="text" class="form-control mb-3" name="group_link" id="group_link" value="{{groupLink.whatsapp_link}}" size="30" maxlength="2048" data-initial-value="{{groupLink.whatsapp_link}}">
                         </div>
                         <button class="btn btn-primary float-right" id="saveConfig" type="submit">{{#str}} save_config, local_whatsapp {{/str}}</button>
                     </form>
