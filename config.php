@@ -41,6 +41,7 @@ foreach ($records as $d) {
     if ($field->get('shortname') === 'whatsapp_group_link') {
         $d->set($d->datafield(), $grouplink);
         $d->set('value', $grouplink);
+        $d->set('contextid', $context->id);
         $d->save();
     }
 }
