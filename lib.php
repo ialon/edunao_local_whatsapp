@@ -15,11 +15,11 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
     global $PAGE, $CFG, $USER;
 
     // Can manage whatsapp.
-    $canmanage = has_capability('local/whatsapp:manage', $context);
+    $canmanage = has_capability('local/whatsapp:manage', $context, $USER->id, false);
 
     // Load list of teachers in the course.
     $teacherroles = array_keys(get_archetype_roles('editingteacher') + get_archetype_roles('teacher'));
-    $teachers = get_role_users($teacherroles, $context, false, 'ra.id, u.id AS userid, r.id AS roleid', 'ra.id ASC');
+    $teachers = get_role_users($teacherroles, $context, true, 'ra.id, u.id AS userid, r.id AS roleid', 'ra.id ASC');
 
     // Get their WhatsApp settings.
     $teachercontacts = [];
@@ -34,7 +34,7 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
         }
     }
 
-    if (is_null($mycontact)) {
+    if ($canmanage && is_null($mycontact)) {
         $mycontact = helper::get_user_contact($USER->id);
     }
 
@@ -42,7 +42,7 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
     $groupcontact = helper::get_group_contact($course->id);
 
     // If user can't manage and there are no contacts, don't show the link.
-    if (!$canmanage && empty($teachercontacts) && empty($groupcontact)) {
+    if (!(is_siteadmin() || $canmanage) && empty($teachercontacts) && empty($groupcontact)) {
         return;
     }
 
@@ -74,7 +74,7 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
     $PAGE->requires->js_call_amd('local_whatsapp/main', 'init', [
         $course->id,
         $teachercontacts,
-        $canmanage,
+        $canmanage || is_siteadmin(),
         $mycontact,
         $groupcontact
     ]);

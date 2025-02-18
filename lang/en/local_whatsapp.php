@@ -18,6 +18,7 @@ $string['contact_message'] = 'I want to talk about {$a}';
 $string['config'] = 'Configuration';
 $string['whatsapp_number'] = 'My WhatsApp Number';
 $string['share_number'] = 'Share with my students';
+$string['adminuser'] = 'You are an administrator not a teacher. You can manage the Group Chat link but not add your contact.';
 $string['group_chat'] = 'Group Chat';
 $string['group_link'] = 'Group Chat Link';
 $string['save_config'] = 'Save changes';
