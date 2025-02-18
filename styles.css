@@ -25,3 +25,12 @@
     height: 16px;
     width: auto;
 }
+
+#whatsappModal .tab-pane {
+    min-height: 400px;
+    padding: 25px;
+}
+
+#whatsappModal .nav-link:focus {
+    box-shadow: none;
+}

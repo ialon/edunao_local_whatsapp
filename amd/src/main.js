@@ -81,10 +81,15 @@ define([
                 return;
             }
 
+            if (this.contacts.length > 0) {
+                this.contacts[0].active = true;
+            }
+
             const context = {
                 courseID: this.courseID,
                 groupLink: this.groupLink,
                 contacts: this.contacts,
+                hasTabs: this.contacts.length > 1 || (this.contacts.length > 0 && this.canManage),
                 canManage: this.canManage,
                 user: this.user
             };

@@ -39,6 +39,7 @@ class helper {
 
         return $contact;
     }
+
     public static function get_group_contact($courseid) {
         global $DB;
 
@@ -48,10 +49,14 @@ class helper {
 
         $courselink = $customfields->whatsapp_group_link ?? null;
 
+        if (empty($courselink)) {
+            return;
+        }
+
         $contact = [
             'id' => $course->id,
             'type' => 'course',
-            'fullname' => $course->fullname,
+            'fullname' => get_string('group_chat', 'local_whatsapp'),
             'whatsapp' => null,
             'whatsapp_enable' => !empty($courselink),
             'whatsapp_link' => $courselink
