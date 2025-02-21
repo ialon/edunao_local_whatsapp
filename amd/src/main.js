@@ -43,7 +43,7 @@ define([
             whatsappItemClone.removeAttribute('tabindex');
             // Modify the cloned link to be an info button with the fa-share icon.
             whatsappItemClone.classList.remove('dropdown-item');
-            whatsappItemClone.classList.add('btn', 'btn-sm', 'btn-info', 'd-flex', 'align-items-center', 'ml-3');
+            whatsappItemClone.classList.add('btn', 'btn-sm', 'btn-info', 'float-right', 'align-items-center', 'ml-3');
             whatsappItemClone.style.height = 'fit-content';
             whatsappItemClone.style.color = 'white';
             whatsappItemClone.innerHTML = '<i class="fa fa-whatsapp mr-2"></i> WhatsApp';
