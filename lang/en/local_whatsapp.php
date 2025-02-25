@@ -25,3 +25,6 @@ $string['save_config'] = 'Save changes';
 
 $string['whatsapp_number_help'] = '<p>Enter the phone number in international format without "+" or special characters. For example, use <strong>11234567890</strong> for the US or <strong>33123456789</strong> for France</p>';
 $string['group_link_help'] = '<p>To get a WhatsApp group link, open the group chat, tap the group name, select <strong>Invite via link</strong>, and copy the link.</p>';
+
+$string['whatsapp_number_scope'] = 'Changes made to your WhatsApp number will be reflected in all courses where you are a teacher.';
+$string['group_link_scope'] = 'The group link is specific to this course.';
