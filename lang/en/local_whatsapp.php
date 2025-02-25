@@ -22,3 +22,6 @@ $string['adminuser'] = 'You are an administrator not a teacher. You can manage t
 $string['group_chat'] = 'Group Chat';
 $string['group_link'] = 'Group Chat Link';
 $string['save_config'] = 'Save changes';
+
+$string['whatsapp_number_help'] = '<p>Enter the phone number in international format without "+" or special characters. For example, use <strong>11234567890</strong> for the US or <strong>33123456789</strong> for France</p>';
+$string['group_link_help'] = '<p>To get a WhatsApp group link, open the group chat, tap the group name, select <strong>Invite via link</strong>, and copy the link.</p>';

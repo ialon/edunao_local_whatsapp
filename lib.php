@@ -12,7 +12,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 function local_whatsapp_extend_navigation_course(navigation_node $navigation, stdClass $course, $context) {
-    global $PAGE, $CFG, $USER;
+    global $PAGE, $OUTPUT, $CFG, $USER;
 
     // Can manage whatsapp.
     $canmanage = has_capability('local/whatsapp:manage', $context, $USER->id, false);
@@ -76,6 +76,6 @@ function local_whatsapp_extend_navigation_course(navigation_node $navigation, st
         $teachercontacts,
         $canmanage || is_siteadmin(),
         $mycontact,
-        $groupcontact
+        $groupcontact,
     ]);
 }

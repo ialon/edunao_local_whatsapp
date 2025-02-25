@@ -85,9 +85,14 @@ define([
                 this.contacts[0].active = true;
             }
 
+            let groupLinkHelp = await str.get_string('group_link_help', 'local_whatsapp');
+            let whatsappNumberHelp = await str.get_string('whatsapp_number_help', 'local_whatsapp');
+
             const context = {
                 courseID: this.courseID,
                 groupLink: this.groupLink,
+                groupLinkHelp: {'text': groupLinkHelp},
+                whatsappNumberHelp: {'text': whatsappNumberHelp},
                 contacts: this.contacts,
                 hasTabs: this.contacts.length > 1 || (this.contacts.length > 0 && this.canManage),
                 canManage: this.canManage,

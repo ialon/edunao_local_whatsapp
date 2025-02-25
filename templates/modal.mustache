@@ -46,7 +46,10 @@
                                 <div id="configDetails" class="align-items-center justify-content-between p-2">
                                     <input type="hidden" name="courseid" id="courseid" value="{{courseID}}">
                                     {{#user}}
-                                        <h6>{{#str}} whatsapp_number, local_whatsapp {{/str}}</h6>
+                                        <h6>
+                                            {{#str}} whatsapp_number, local_whatsapp {{/str}}
+                                            {{#whatsappNumberHelp}} {{> core/help_icon }} {{/whatsappNumberHelp}}
+                                        </h6>
                                         <input type="text" class="form-control mb-3" name="whatsapp_number" id="whatsapp_number" value="{{user.whatsapp}}" size="30" maxlength="2048" data-initial-value="{{user.whatsapp}}">
                                         <h6>{{#str}} share_number, local_whatsapp {{/str}}</h6>
                                         <input type="checkbox" name="share_number" class="form-control checkbox mb-3" id="share_number" {{#user.whatsapp_enable}}checked{{/user.whatsapp_enable}} data-initial-value="{{user.whatsapp_enable}}">
@@ -54,7 +57,10 @@
                                     {{^user}}
                                         <p>{{#str}} adminuser, local_whatsapp {{/str}}</p>
                                     {{/user}}
-                                    <h6>{{#str}} group_link, local_whatsapp {{/str}}</h6>
+                                        <h6>
+                                            {{#str}} group_link, local_whatsapp {{/str}}
+                                            {{#groupLinkHelp}} {{> core/help_icon }} {{/groupLinkHelp}}
+                                        </h6>
                                     <input type="text" class="form-control mb-3" name="group_link" id="group_link" value="{{groupLink.whatsapp_link}}" size="30" maxlength="2048" data-initial-value="{{groupLink.whatsapp_link}}">
                                 </div>
                                 <button class="btn btn-primary float-right" id="saveConfig" type="submit">{{#str}} save_config, local_whatsapp {{/str}}</button>
