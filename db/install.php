@@ -34,7 +34,7 @@ function xmldb_local_whatsapp_install() {
         $field->shortname = 'whatsapp';
         $field->name = 'WhatsApp Number';
         $field->datatype = 'text';
-        $field->description = '';
+        $field->description = '<p>Enter the phone number in international format without "+" or special characters. For example, use <strong>11234567890</strong> for the US or <strong>33123456789</strong> for France</p>';
         $field->descriptionformat = 1;
         $field->categoryid = $category->id;
         $field->sortorder = $DB->count_records('user_info_field', ['categoryid' => $category->id]) + 1;
@@ -97,7 +97,7 @@ function xmldb_local_whatsapp_install() {
         $field->shortname = 'whatsapp_group_link';
         $field->name = 'Group chat link';
         $field->type = 'text';
-        $field->description = '';
+        $field->description = '<p>To get a WhatsApp group link, open the group chat, tap the group name, select <strong>Invite via link</strong>, and copy the link.</p>';
         $field->descriptionformat = 1;
         $field->sortorder = $DB->count_records('customfield_field', ['categoryid' => $category->id]) + 1;
         $field->categoryid = $category->id;
