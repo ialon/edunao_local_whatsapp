@@ -21,13 +21,16 @@
                 <div class="tab-content">
                     {{#contacts}}
                         <div id="tab-{{type}}-{{id}}" class="tab-pane fade in {{#active}}active{{/active}}">
+                            {{^hasTabs}}
+                                <h5 class="mb-5">{{fullname}}</h5>
+                            {{/hasTabs}}
                             <div id="qrcode-{{type}}-{{id}}" class="qrcode mb-3"></div>
                             <br>
                             <div class="contact-link d-flex flex-row align-items-center justify-content-between p-2 mb-3">
                                 <a href="{{whatsapp_link}}"
                                     target="_blank"
                                     class="mr-2 pl-3 pr-3">
-                                    {{fullname}}
+                                    {{whatsapp_link}}
                                 </a>
                                 <button id="copy-contact-{{type}}-{{id}}-button"
                                     class="btn btn-info"

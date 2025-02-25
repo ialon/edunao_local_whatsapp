@@ -1,5 +1,6 @@
 #whatsappModal .modal-body .qrcode {
-    display: inline-block;
+    display: block;
+    margin: auto;
     width: 256px;
     height: 256px;
 }
@@ -19,6 +20,7 @@
 
 #whatsappModal .modal-body .contact-link a {
     display: inline-block;
+    max-width: 350px;
 }
 
 #whatsappModal #configForm .checkbox {
