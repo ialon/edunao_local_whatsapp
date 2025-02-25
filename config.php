@@ -25,12 +25,12 @@ $PAGE->set_url(new moodle_url('/local/whatsapp/config.php'));
 $PAGE->set_context($context);
 
 // Update custom profile fields data.
-if (!empty($whatsapp) || !empty($sharenumber)) {
-    $profilefields = [];
-    $profilefields['whatsapp'] = $whatsapp;
-    $profilefields['whatsapp_enable'] = $sharenumber;
-    profile_save_custom_fields($USER->id, $profilefields);
-}
+$profilefields = [];
+$profilefields['whatsapp'] = $whatsapp;
+$profilefields['whatsapp_enable'] = $sharenumber;
+profile_save_custom_fields($USER->id, $profilefields);
+// Refresh user for $USER variable.
+$USER = get_complete_user_data('id', $USER->id);
 
 // Update course group link.
 $handler = \core_course\customfield\course_handler::create();

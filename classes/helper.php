@@ -18,9 +18,6 @@ class helper {
         
         $user = get_complete_user_data('id', $userid);
 
-        if (empty($user->profile['whatsapp'])) {
-            return;
-        }
         if ($onlyactive && empty($user->profile['whatsapp_enable'])) {
             return;
         }
